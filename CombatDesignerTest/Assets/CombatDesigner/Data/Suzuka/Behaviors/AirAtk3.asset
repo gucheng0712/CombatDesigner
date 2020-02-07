@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b230e5d75007444f9f3706323f2a7d0, type: 3}
+  m_Name: AirAtk3
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: behaviorActions
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[CombatDesigner.IBehaviorAction,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|CombatDesigner.FrontVelocityAction, Assembly-CSharp
+    - Name: startFrame
+      Entry: 4
+      Data: 0
+    - Name: endFrame
+      Entry: 4
+      Data: 5
+    - Name: velocityPower
+      Entry: 4
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  name: AirAtk3
+  inputKey: 323
+  blendRate: 0.2
+  frameLength: 60
+  loopBehavior: 0
+  cooldown: 0
+  energyPointCost: 0
+  airJumpPointCost: 0
+  requireTarget: 0
+  requireGrounded: 0
+  requireAerial: 1
+  requireRunning: 0
+  requireAttacking: 0
+  requireBeingAttacked: 0
+  canForceExecute: 0
+  attackInfos:
+  - singleTarget: 0
+    frameInfo:
+      startFrame: 10
+      length: 5
+    hitboxInfo:
+      hitBoxPos: {x: 0, y: 0.78, z: 1.04}
+      hitBoxRot: {x: 0, y: 0, z: 0, w: 0}
+      hitBoxScale: {x: 2.344369, y: 2.634824, z: 2.476578}
+    hitPauseSelf: 4
+    hitPauseTarget: 4
+    hitStun: 60
+    hitForceToGroundedTarget: {x: 0, y: 2, z: 3.5}
+    hitForceToAerialTarget: {x: 0, y: -15, z: 3.5}
+    atkType: 0
+    hitDmg: 0
+    powerMeterGrowthRate: 0
+    hitVFX: {fileID: 7163493476654373326, guid: d8eb03e76b8e2d1428806184a3519306,
+      type: 3}
+    cancelDelay: 60

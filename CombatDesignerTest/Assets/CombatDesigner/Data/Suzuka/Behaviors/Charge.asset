@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b230e5d75007444f9f3706323f2a7d0, type: 3}
+  m_Name: Charge
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: c54d36ba3168c14428a72989c9866f04, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: behaviorActions
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[CombatDesigner.IBehaviorAction,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 1|CombatDesigner.ChargeFailAction, Assembly-CSharp
+    - Name: startFrame
+      Entry: 4
+      Data: 0
+    - Name: endFrame
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 2|CombatDesigner.ChargedAttackAction, Assembly-CSharp
+    - Name: startFrame
+      Entry: 4
+      Data: 31
+    - Name: endFrame
+      Entry: 4
+      Data: 2000
+    - Name: chargeAttack
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 3|CombatDesigner.CameraShakeAction, Assembly-CSharp
+    - Name: startFrame
+      Entry: 4
+      Data: 10
+    - Name: endFrame
+      Entry: 4
+      Data: 2000
+    - Name: freelook
+      Entry: 6
+      Data: 
+    - Name: topRigNoise
+      Entry: 6
+      Data: 
+    - Name: midRigNoise
+      Entry: 6
+      Data: 
+    - Name: botRigNoise
+      Entry: 6
+      Data: 
+    - Name: shakeAmplitude
+      Entry: 4
+      Data: 2.5
+    - Name: shakeFrequency
+      Entry: 4
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  name: Charge
+  inputKey: 324
+  blendRate: 0
+  frameLength: 2000
+  loopBehavior: 0
+  cooldown: 0
+  energyPointCost: 0
+  airJumpPointCost: 0
+  requireTarget: 0
+  requireGrounded: 0
+  requireAerial: 0
+  requireRunning: 0
+  requireAttacking: 0
+  requireBeingAttacked: 0
+  canForceExecute: 0
+  attackInfos: []

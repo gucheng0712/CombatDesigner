@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e663aa91ca8ea409d9f90e2c6484e5, type: 3}
+  m_Name: PlayerGraph
+  m_EditorClassIdentifier: 
+  model: {fileID: 11400000, guid: a4825848568473641ac5354389930d58, type: 2}
+  graphName: New Graph
+  selectedNode: {fileID: 0}
+  defaultNode: {fileID: 0}
+  nodes:
+  - {fileID: 114256670006428838}
+  - {fileID: 114824621704366740}
+  connectionRequest: 0
+  connectedNode: {fileID: 0}
+--- !u!114 &114256670006428838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f1777f872c64e3c9b89d76425d3df9, type: 3}
+  m_Name: Root Behavior
+  m_EditorClassIdentifier: 
+  id: 0
+  priority: 0
+  keyCode: 0
+  behavior: {fileID: 11400000, guid: a7139005e8b8671499620104b7595e03, type: 2}
+  output:
+    isOccupied: 0
+    nodes:
+    - {fileID: 114824621704366740}
+  input:
+    isOccupied: 0
+    node: {fileID: 0}
+  parentGraph: {fileID: 11400000}
+  isSelected: 0
+  nodeName: Root Behavior
+  nodeRect:
+    serializedVersion: 2
+    x: 242.65384
+    y: 108.23076
+    width: 100
+    height: 100
+  followUps: 01000000
+--- !u!114 &114824621704366740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0e15de3d816e244be95ccb43191633, type: 3}
+  m_Name: Chain Behavior
+  m_EditorClassIdentifier: 
+  id: 1
+  priority: 0
+  keyCode: 0
+  behavior: {fileID: 11400000, guid: e59b3a3a0eabec747867e691d75325b5, type: 2}
+  output:
+    isOccupied: 0
+    nodes: []
+  input:
+    isOccupied: 1
+    node: {fileID: 114256670006428838}
+  parentGraph: {fileID: 11400000}
+  isSelected: 0
+  nodeName: Chain Behavior
+  nodeRect:
+    serializedVersion: 2
+    x: 129
+    y: 299
+    width: 100
+    height: 100
+  followUps: 

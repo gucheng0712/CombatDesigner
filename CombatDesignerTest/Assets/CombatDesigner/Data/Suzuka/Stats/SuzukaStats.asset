@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29cbe4fc5c562ae48b6fc9f69a4bd71c, type: 3}
+  m_Name: SuzukaStats
+  m_EditorClassIdentifier: 
+  level: 1
+  exp: 0
+  maxExp: 0
+  health: 0
+  maxHealth: 0
+  energy: 0
+  maxEnergy: 0
+  atkDmg: 0
+  criticalChance: 0
+  atkSpd: 0
+  moveSpd: 0
+  hardStraight: 0
