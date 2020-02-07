@@ -1,4 +1,5 @@
-using System;
+
+using System;
 using UnityEngine;
 
 namespace CombatDesigner
@@ -200,7 +201,7 @@ namespace CombatDesigner
 
             int seek = 0;
 
-            //µÚÒ»È¦
+            //ï¿½ï¿½Ò»È¦
             for (int i = 0; i < sides + 2; i++)
             {
                 float phi = Mathf.PI * 2.0f * (i / (float)sides);
@@ -212,7 +213,7 @@ namespace CombatDesigner
                 lr.SetPosition(seek, offset + col.center);
                 seek++;
             }
-            //µÚ¶þÈ¦£¬¹ý1/4
+            //ï¿½Ú¶ï¿½È¦ï¿½ï¿½ï¿½ï¿½1/4
             for (int i = 0; i < sides + sides / 4 + 1; i++)
             {
                 float phi = Mathf.PI * 2.0f * (i / (float)sides);
@@ -225,7 +226,7 @@ namespace CombatDesigner
                 lr.SetPosition(seek, offset + col.center); seek++;
 
             }
-            //µÚÈýÈ¦
+            //ï¿½ï¿½ï¿½ï¿½È¦
             for (int i = sides / 4; i < sides + 2 + sides / 4; i++)
             {
                 float phi = Mathf.PI * 2.0f * (i / (float)sides);
@@ -267,7 +268,7 @@ namespace CombatDesigner
             lr.positionCount = (sides + 2) + (sides + sides / 4 + 1) + (sides + 2) + 1 + (sides + 2);
             int seek = 0;
 
-            //µÚÒ»È¦
+            //ï¿½ï¿½Ò»È¦
             for (int i = 0; i < sides + 2; i++)
             {
                 float phi = Mathf.PI * 2.0f * (i / (float)sides);
@@ -281,7 +282,7 @@ namespace CombatDesigner
                 lr.SetPosition(seek, rot * offset + col.center); seek++;
 
             }
-            //µÚ¶þÈ¦£¬¹ý1/4
+            //ï¿½Ú¶ï¿½È¦ï¿½ï¿½ï¿½ï¿½1/4
             for (int i = 0; i < sides + sides / 4 + 1; i++)
             {
                 float phi = Mathf.PI * 2.0f * (i / (float)sides);
@@ -297,7 +298,7 @@ namespace CombatDesigner
                 lr.SetPosition(seek, rot * offset + col.center); seek++;
 
             }
-            //µÚÈýÈ¦
+            //ï¿½ï¿½ï¿½ï¿½È¦
             for (int i = sides / 4; i < sides + 2 + sides / 4; i++)
             {
                 float phi = Mathf.PI * 2.0f * (i / (float)sides);
@@ -324,7 +325,7 @@ namespace CombatDesigner
                 offset.y -= col.height / 2 - col.radius;
                 lr.SetPosition(seek, rot * offset + col.center); seek++;
             }
-            //µÚËÄÈ¦
+            //ï¿½ï¿½ï¿½ï¿½È¦
             for (int i = sides / 4; i < sides + 2 + sides / 4; i++)
             {
                 float phi = Mathf.PI * 2.0f * (i / (float)sides);

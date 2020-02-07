@@ -5,5 +5,8 @@ using CombatDesigner;
 
 public class NewAction : IBehaviorAction
 {
-  
+    public override void Init(ActorModel model)
+    {
+
+    }
 }
