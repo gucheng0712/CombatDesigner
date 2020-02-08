@@ -14,12 +14,22 @@ namespace CombatDesigner.EditorTool
     public class ChainEditorPopupWindow : EditorWindow
     {
         static ChainEditorPopupWindow popup;
+        /// <summary>
+        /// model of the chain editor
+        /// </summary>
         public ActorModel model;
+
+        /// <summary>
+        /// Open a popup window
+        /// </summary>
         public static void Open()
         {
             popup = GetWindow<ChainEditorPopupWindow>(true, "Node Popup");
         }
 
+        /// <summary>
+        /// Draw popup window
+        /// </summary>
         private void OnGUI()
         {
             GUILayout.Space(20);

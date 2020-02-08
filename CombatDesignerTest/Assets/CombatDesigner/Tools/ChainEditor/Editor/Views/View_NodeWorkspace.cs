@@ -23,17 +23,22 @@ namespace CombatDesigner.EditorTool
         /// <summary>        /// The node index to delete        /// </summary>
         int _deleteNodeIndex = 0;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public View_NodeWorkspace() : base("Work View")
         {
         }
 
-        /// <summary>        /// Update the the view aspect of the         /// </summary>        /// <param name="editorRect"></param>        /// <param name="percentageRect"></param>        /// <param name="e"></param>        /// <param name="graph"></param>
+        /// <summary>        /// A method to update the the view aspect of the         /// </summary>        /// <param name="editorRect"></param>        /// <param name="percentageRect"></param>        /// <param name="e"></param>        /// <param name="graph"></param>
         public override void UpdateView(Rect editorRect, Rect percentageRect, Event e, ChainGraph graph)
         {
             base.UpdateView(editorRect, percentageRect, e, graph);
+
+            // Draw the Node workspace background
+
             GUI.Box(viewRect, "", skin.GetStyle("ViewBG"));
             ChainEditorUtilities.DrawGrid(viewRect, 50f, 0.25f, Color.white);
-
             ChainEditorUtilities.DrawGrid(viewRect, 10f, 0.15f, Color.white);
 
             if (graph != null)
@@ -45,9 +50,15 @@ namespace CombatDesigner.EditorTool
                 GUILayout.EndArea();
             }
 
+            // Update mouse and keyboard event
             ProcessEvent(e);
         }
 
+        /// <summary>
+        /// A method to draw everything in Graph
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="graph"></param>
         void DrawZoomableGraph(Event e, ChainGraph graph)
         {
             ChainEditorUtilities.BeginZoomArea(zoom, viewRect);
@@ -56,6 +67,10 @@ namespace CombatDesigner.EditorTool
             ChainEditorUtilities.EndZoomArea();
         }
 
+        /// <summary>
+        /// A method to draw the toolbar
+        /// </summary>
+        /// <param name="graph"></param>
         void DrawStateToolBar(ChainGraph graph)
         {
             if (graph.model != null)
@@ -68,6 +83,10 @@ namespace CombatDesigner.EditorTool
             }
         }
 
+        /// <summary>
+        ///A method to update mouse and key events
+        /// </summary>
+        /// <param name="e"></param>
         protected override void ProcessEvent(Event e)
         {
             base.ProcessEvent(e);
@@ -76,6 +95,10 @@ namespace CombatDesigner.EditorTool
             ZoomEvent();
         }
 
+        /// <summary>
+        /// A method to open Context menu
+        /// </summary>
+        /// <param name="e"></param>
         void ContextMenuEvent(Event e)
         {
             //right mouse
@@ -118,6 +141,11 @@ namespace CombatDesigner.EditorTool
             }
         }
 
+        /// <summary>
+        ///  A method to update the context menu
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="contextID"></param>
         void ProcessContextMenu(Event e, int contextID)
         {
             if (graph != null)
@@ -151,6 +179,10 @@ namespace CombatDesigner.EditorTool
             e.Use();
         }
 
+        /// <summary>
+        /// A callback method to call the elements inside context menu
+        /// </summary>
+        /// <param name="obj"></param>
         void ContextCallback(object obj)
         {
             switch (obj.ToString())
@@ -180,6 +212,10 @@ namespace CombatDesigner.EditorTool
             }
         }
 
+        /// <summary>
+        ///  A method to pan the graph
+        /// </summary>
+        /// <param name="e"></param>
         void PanEvent(Event e)
         {
             if (e.button == 2)
@@ -195,6 +231,9 @@ namespace CombatDesigner.EditorTool
             }
         }
 
+        /// <summary>
+        /// A method to zoom in/out graph
+        /// </summary>
         void ZoomEvent()
         {
             // Allow adjusting the zoom with the mouse wheel as well. In this case, use the mouse coordinates
@@ -213,4 +252,5 @@ namespace CombatDesigner.EditorTool
             }
         }
     }
-}#endif
+}
+#endif

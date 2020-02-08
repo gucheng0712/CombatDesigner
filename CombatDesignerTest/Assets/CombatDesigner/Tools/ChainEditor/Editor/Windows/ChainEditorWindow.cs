@@ -11,14 +11,33 @@ namespace CombatDesigner.EditorTool
 {
     public class ChainEditorWindow : EditorWindow
     {
+        /// <summary>
+        /// The graph of the chain editor
+        /// </summary>
         public ChainGraph graph;
+
+        /// <summary>
+        /// Property Space
+        /// </summary>
         public View_Property _propertyView;
+        /// <summary>
+        /// Nodes Space
+        /// </summary>
         public View_NodeWorkspace _workView;
 
+        /// <summary>
+        /// Chain Editor Window
+        /// </summary>
         static ChainEditorWindow _win;
 
+        /// <summary>
+        ///  the percentage of the node workspace size
+        /// </summary>
         float _viewPercentage = 0.75f;
 
+        /// <summary>
+        /// Open the ChainEditor window
+        /// </summary>
         public static void Open()
         {
             ChainEditorWindow winTemp = GetWindow<ChainEditorWindow>("Behavior-Tree Editor");
@@ -26,6 +45,9 @@ namespace CombatDesigner.EditorTool
             CreateViews();
         }
 
+        /// <summary>
+        /// Draw the views
+        /// </summary>
         void OnGUI()
         {
             if (_propertyView == null)
@@ -48,6 +70,9 @@ namespace CombatDesigner.EditorTool
             Repaint();// make it to update constantly
         }
 
+        /// <summary>
+        /// A static method to create the eidtor window's view spaces.
+        /// </summary>
         static void CreateViews()
         {
             if (_win != null)
@@ -61,6 +86,10 @@ namespace CombatDesigner.EditorTool
             }
         }
 
+        /// <summary>
+        /// Update the events
+        /// </summary>
+        /// <param name="e"></param>
         void ProecessEvents(Event e)
         {
             if (e.type == EventType.KeyDown && e.keyCode == KeyCode.LeftArrow)
@@ -72,7 +101,6 @@ namespace CombatDesigner.EditorTool
                 _viewPercentage += 0.01f;
             }
         }
-
     }
 }
 #endif

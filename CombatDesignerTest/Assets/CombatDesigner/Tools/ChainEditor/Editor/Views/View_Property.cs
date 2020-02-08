@@ -8,11 +8,15 @@ using System.Linq;
 
 namespace CombatDesigner.EditorTool
 {
+    // todo add different line style
     public enum DrawLineStyle
     {
         Line, Curve, AngleLine
     }
 
+    /// <summary>
+    /// A class of property side of the ChainEditor
+    /// </summary>
     public class View_Property : ViewBase
     {
         public DrawLineStyle lineStyle;
