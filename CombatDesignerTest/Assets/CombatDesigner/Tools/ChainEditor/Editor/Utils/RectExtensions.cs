@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace CombatDesigner.EditorTool
 {
-    // Helper Rect extension methods
+    /// <summary>    ///  Helper Rect extension methods for the Rect class    /// </summary>
     public static class RectExtensions
     {
         public static Vector2 TopLeft(this Rect rect)
@@ -48,5 +48,4 @@ namespace CombatDesigner.EditorTool
             return result;
         }
     }
-}
-#endif
+}#endif

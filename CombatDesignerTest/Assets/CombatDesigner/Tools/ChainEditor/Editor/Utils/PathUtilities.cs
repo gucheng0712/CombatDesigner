@@ -15,8 +15,7 @@ public class PathUtilities
         var subfolders = AssetDatabase.GetSubFolders(path);
         if (subfolders.Length > 0)
         {
-            foreach (var subfolder in subfolders)
-            {
+            foreach (var subfolder in subfolders)            {
                 foreach (var result in GetLeafDirectories(subfolder))
                 {
                     yield return result;
@@ -29,5 +28,4 @@ public class PathUtilities
             yield return path;
         }
     }
-}
-#endif
+}#endif

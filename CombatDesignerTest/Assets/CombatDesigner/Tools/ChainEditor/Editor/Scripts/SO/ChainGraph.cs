@@ -9,17 +9,26 @@ using System;
 
 namespace CombatDesigner.EditorTool
 {
+    /// <summary>    /// The Graph Class    /// </summary>
     [System.Serializable]
     public class ChainGraph : ScriptableObject
     {
+        /// <summary>        /// The model reference of current graph        /// </summary>
         public ActorModel model;
-        public string graphName = "New Graph";
-        public ChainBehaviorNode selectedNode;
-        public ChainBehaviorNode defaultNode;
 
+        /// <summary>        /// The name of the graph        /// </summary>
+        public string graphName = "New Graph";
+
+        /// <summary>        /// Selected node        /// </summary>
+        public ChainBehaviorNode selectedNode;
+
+        /// <summary>        /// nodes that the graph contains        /// </summary>
         [HideInInspector] public List<ChainBehaviorNode> nodes;
 
+        /// <summary>        /// A flag the determine if the node is sending connection request to the graph        /// </summary>
         [HideInInspector] public bool connectionRequest;
+
+        /// <summary>        /// The latest connected node        /// </summary>
         [HideInInspector] public ChainBehaviorNode connectedNode;
 
 
@@ -31,6 +40,7 @@ namespace CombatDesigner.EditorTool
             }
         }
 
+        /// <summary>        /// Initialization        /// </summary>        /// <param name="model"></param>
         public void InitGraph(ActorModel model)
         {
             this.model = model;
@@ -44,7 +54,7 @@ namespace CombatDesigner.EditorTool
             }
         }
 
-        // runtime version
+        /// <summary>        /// Runtime version of Graph Update        /// </summary>
         public void UpdateGraph()
         {
             if (nodes.Count > 0)
@@ -53,8 +63,8 @@ namespace CombatDesigner.EditorTool
             }
         }
 
-        // editor version
 #if UNITY_EDITOR
+        // Editor version of Graph Update
         public void UpdateGraphGUI(Event e, Rect viewRect, GUISkin skin)
         {
             // lock for connection mode
@@ -83,6 +93,7 @@ namespace CombatDesigner.EditorTool
 
 #endif
 
+        /// <summary>        /// Update key and mouse events        /// </summary>        /// <param name="e"></param>        /// <param name="viewRect"></param>
         void ProcessEvents(Event e, Rect viewRect)
         {
             if (viewRect.Contains(e.mousePosition))
@@ -95,6 +106,7 @@ namespace CombatDesigner.EditorTool
                         bool setNode = false;
                         selectedNode = null;
 
+                        // Select node
                         for (int i = 0; i < nodes.Count; i++)
                         {
                             if (nodes[i].nodeRect.Contains(e.mousePosition))
@@ -120,6 +132,7 @@ namespace CombatDesigner.EditorTool
             }
         }
 
+        /// <summary>        /// A method to deselect all nodes in graph        /// </summary>
         public void DeselectAllNodes()
         {
             for (int i = 0; i < nodes.Count; i++)
@@ -128,6 +141,7 @@ namespace CombatDesigner.EditorTool
             }
         }
 
+        /// <summary>        /// Draw lines between output and mouse position        /// </summary>        /// <param name="mousePos"></param>
         void DrawConnectionToMouse(Vector2 mousePos)
         {
             Handles.BeginGUI();
@@ -136,5 +150,4 @@ namespace CombatDesigner.EditorTool
                 new Vector3(mousePos.x, mousePos.y, 0));
         }
     }
-}
-#endif
+}#endif

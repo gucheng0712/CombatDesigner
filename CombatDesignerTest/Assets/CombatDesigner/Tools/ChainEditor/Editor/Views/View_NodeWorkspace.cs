@@ -9,19 +9,25 @@ namespace CombatDesigner.EditorTool
 {
     public class View_NodeWorkspace : ViewBase
     {
-        public static float Zoom = 1.0f;
+        /// <summary>        /// current zoom value        /// </summary>
+        public static float zoom = 1.0f;
         public static Vector2 ZoomPivot;
 
+        /// <summary>        ///  Min and Max Zoom value        /// </summary>
         const float ZOOM_MIN = 0.5f;
         const float ZOOM_MAX = 5.0f;
 
+        /// <summary>        /// The mouse position        /// </summary>
         Vector2 _mousePos;
+
+        /// <summary>        /// The node index to delete        /// </summary>
         int _deleteNodeIndex = 0;
 
         public View_NodeWorkspace() : base("Work View")
         {
         }
 
+        /// <summary>        /// Update the the view aspect of the         /// </summary>        /// <param name="editorRect"></param>        /// <param name="percentageRect"></param>        /// <param name="e"></param>        /// <param name="graph"></param>
         public override void UpdateView(Rect editorRect, Rect percentageRect, Event e, ChainGraph graph)
         {
             base.UpdateView(editorRect, percentageRect, e, graph);
@@ -34,7 +40,7 @@ namespace CombatDesigner.EditorTool
             {
                 DrawZoomableGraph(e, graph);
 
-                GUILayout.BeginArea(new Rect(viewRect.x, viewRect.y, viewRect.width * Zoom, viewRect.height));
+                GUILayout.BeginArea(new Rect(viewRect.x, viewRect.y, viewRect.width * zoom, viewRect.height));
                 DrawStateToolBar(graph);
                 GUILayout.EndArea();
             }
@@ -44,8 +50,8 @@ namespace CombatDesigner.EditorTool
 
         void DrawZoomableGraph(Event e, ChainGraph graph)
         {
-            ChainEditorUtilities.BeginZoomArea(Zoom, viewRect);
-            viewRect.size /= Zoom;
+            ChainEditorUtilities.BeginZoomArea(zoom, viewRect);
+            viewRect.size /= zoom;
             graph.UpdateGraphGUI(e, viewRect, skin);
             ChainEditorUtilities.EndZoomArea();
         }
@@ -54,11 +60,11 @@ namespace CombatDesigner.EditorTool
         {
             if (graph.model != null)
             {
-                DrawHeader(viewTitle + " Graph - " + graph.model.name, Zoom);
+                DrawHeader(viewTitle + " Graph - " + graph.model.name, zoom);
             }
             else
             {
-                DrawHeader(viewTitle + " Graph", Zoom);
+                DrawHeader(viewTitle + " Graph", zoom);
             }
         }
 
@@ -198,14 +204,13 @@ namespace CombatDesigner.EditorTool
             {
                 Vector2 screenCoordsMousePos = Event.current.mousePosition;
                 Vector2 delta = Event.current.delta;
-                Vector2 zoomCoordsMousePos = ChainEditorUtilities.ConvertScreenCoordsToZoomCoords(screenCoordsMousePos, viewRect, Zoom, ZoomPivot);
+                Vector2 zoomCoordsMousePos = ChainEditorUtilities.ConvertScreenCoordsToZoomCoords(screenCoordsMousePos, viewRect, zoom, ZoomPivot);
                 float zoomDelta = -delta.y / 150.0f;
-                float oldZoom = Zoom;
-                Zoom += zoomDelta;
-                Zoom = Mathf.Clamp(Zoom, ZOOM_MIN, ZOOM_MAX);
-                ZoomPivot += (zoomCoordsMousePos - ZoomPivot) - (oldZoom / Zoom) * (zoomCoordsMousePos - ZoomPivot);
+                float oldZoom = zoom;
+                zoom += zoomDelta;
+                zoom = Mathf.Clamp(zoom, ZOOM_MIN, ZOOM_MAX);
+                ZoomPivot += (zoomCoordsMousePos - ZoomPivot) - (oldZoom / zoom) * (zoomCoordsMousePos - ZoomPivot);
             }
         }
     }
-}
-#endif
+}#endif

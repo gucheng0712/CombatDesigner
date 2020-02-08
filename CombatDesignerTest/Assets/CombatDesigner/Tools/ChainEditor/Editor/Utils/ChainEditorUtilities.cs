@@ -8,8 +8,10 @@ using System.Linq;
 
 namespace CombatDesigner.EditorTool
 {
+    /// <summary>    /// A utility class of Chain Editor    /// </summary>
     public static class ChainEditorUtilities
     {
+        /// <summary>        /// A static method to create a new graph into Chain Editor based on a ActorModel         /// </summary>        /// <param name="model"></param>
         public static void CreateNewGraph(ActorModel model)
         {
             string graphPath = EditorUtility.SaveFilePanelInProject("Create Graph", "NewGraph", "", "Please enter a file name to save");
@@ -44,6 +46,7 @@ namespace CombatDesigner.EditorTool
             CreateNode(graph, NodeType.RootBehaviorNode, rootNodePos);
         }
 
+        /// <summary>        /// A static method to load existing graph into Chain Editor        /// </summary>
         public static void LoadGraph()
         {
             string graphPath = EditorUtility.OpenFilePanel("Load Graph", Application.dataPath, "asset");
@@ -68,6 +71,7 @@ namespace CombatDesigner.EditorTool
             }
         }
 
+        /// <summary>        ///  A static method to remove the graph in the Chain Editor        /// </summary>
         public static void UnloadGraph()
         {
             ChainEditorWindow win = EditorWindow.GetWindow<ChainEditorWindow>();
@@ -77,6 +81,7 @@ namespace CombatDesigner.EditorTool
             }
         }
 
+        /// <summary>        ///  A static method to create a node in graph        /// </summary>        /// <param name="graph"></param>        /// <param name="nodeType"></param>        /// <param name="pos"></param>
         public static void CreateNode(ChainGraph graph, NodeType nodeType, Vector2 pos)
         {
             if (graph != null)
@@ -113,6 +118,7 @@ namespace CombatDesigner.EditorTool
             }
         }
 
+        /// <summary>        /// A static method to delete the node in the graph        /// </summary>        /// <param name="nodeIndex"></param>        /// <param name="graph"></param>
         public static void DeleteNode(int nodeIndex, ChainGraph graph)
         {
             if (graph != null)
@@ -122,7 +128,7 @@ namespace CombatDesigner.EditorTool
                     ChainBehaviorNode deleteNode = (ChainBehaviorNode)graph.nodes[nodeIndex];
                     if (deleteNode != null)
                     {
-                        DeleteNodeAndCleanUp(graph, deleteNode);
+                        RemoveNodeAndCleanUp(graph, deleteNode);
                         UpdateChainBehaviorNodeID(graph);
                         UpdateFollowUps(graph);
                         Object.DestroyImmediate(deleteNode, true);
@@ -131,9 +137,7 @@ namespace CombatDesigner.EditorTool
                     }
                 }
             }
-        }
-
-        public static void DeleteNodeAndCleanUp(ChainGraph graph, ChainBehaviorNode deleteNode)
+        }        /// <summary>        /// A static method to remove the node from graph's nodes list and clean up        /// </summary>        /// <param name="graph"></param>        /// <param name="deleteNode"></param>        static void RemoveNodeAndCleanUp(ChainGraph graph, ChainBehaviorNode deleteNode)
         {
             foreach (ChainBehaviorNode n in graph.nodes)
             {
@@ -149,7 +153,8 @@ namespace CombatDesigner.EditorTool
 
         }
 
-        public static void UpdateChainBehaviorNodeID(ChainGraph graph)
+        /// <summary>        /// Update the ID of the node        /// </summary>        /// <param name="graph"></param>
+        static void UpdateChainBehaviorNodeID(ChainGraph graph)
         {
             for (int i = 0; i < graph.nodes.Count; i++)
             {
@@ -157,6 +162,7 @@ namespace CombatDesigner.EditorTool
             }
         }
 
+        /// <summary>        ///  A static method to update the followups of the nodes        /// </summary>        /// <param name="graph"></param>
         public static void UpdateFollowUps(ChainGraph graph)
         {
             foreach (ChainBehaviorNode n in graph.nodes)
@@ -173,12 +179,13 @@ namespace CombatDesigner.EditorTool
             }
         }
 
+        /// <summary>        /// A static method to reorder the list by its priority        /// </summary>        /// <param name="n"></param>
         public static void ReorderByPriority(ChainBehaviorNode n)
         {
             n.output.nodes = n.output.nodes.OrderBy(o => o.priority).ToList();
         }
 
-
+        /// <summary>        /// A static method to draw grid        /// </summary>        /// <param name="viewRect"></param>        /// <param name="gridSpacing"></param>        /// <param name="gridOpacity"></param>        /// <param name="gridColor"></param>
         public static void DrawGrid(Rect viewRect, float gridSpacing, float gridOpacity, Color gridColor)
         {
             int widthDivs = Mathf.CeilToInt(viewRect.width / gridSpacing);
@@ -198,6 +205,7 @@ namespace CombatDesigner.EditorTool
             Handles.EndGUI();
         }
 
+        /// <summary>        /// A static method to create a texture        /// </summary>        /// <param name="width"></param>        /// <param name="height"></param>        /// <param name="col"></param>        /// <returns></returns>
         public static Texture2D MakeTex(int width, int height, Color col)
         {
             Color[] pix = new Color[width * height];
@@ -215,6 +223,7 @@ namespace CombatDesigner.EditorTool
         const float k_EditorWindowTabHeight = 20.0f;
         static Matrix4x4 s_prevGuiMatrix;
 
+        /// <summary>        /// A static method to start a Zoom Area        /// </summary>        /// <param name="zoomScale"></param>        /// <param name="screenCoordsArea"></param>        /// <returns></returns>
         public static Rect BeginZoomArea(float zoomScale, Rect screenCoordsArea)
         {
             GUI.EndGroup();        // End the group Unity begins automatically for an EditorWindow to clip out the window tab. This allows us to draw outside of the size of the EditorWindow.
@@ -234,6 +243,7 @@ namespace CombatDesigner.EditorTool
             return clippedArea;
         }
 
+        /// <summary>        /// A static method to ends a Zoom Area        /// </summary>
         public static void EndZoomArea()
         {
             GUI.matrix = s_prevGuiMatrix;
@@ -241,6 +251,7 @@ namespace CombatDesigner.EditorTool
             GUI.BeginGroup(new Rect(0.0f, k_EditorWindowTabHeight, Screen.width, Screen.height));
         }
 
+        /// <summary>        /// Convert Screen Coordinates to the zoom coordinatess         /// </summary>        /// <param name="screenCoords"></param>        /// <param name="zoomRect"></param>        /// <param name="zoomScale"></param>        /// <param name="zoomPivot"></param>        /// <returns></returns>
         public static Vector2 ConvertScreenCoordsToZoomCoords(Vector2 screenCoords, Rect zoomRect, float zoomScale, Vector2 zoomPivot)
         {
             return (screenCoords - zoomRect.TopLeft()) / zoomScale + zoomPivot;
@@ -263,6 +274,4 @@ namespace CombatDesigner.EditorTool
         }
         #endregion
     }
-}
-
-#endif
+}#endif

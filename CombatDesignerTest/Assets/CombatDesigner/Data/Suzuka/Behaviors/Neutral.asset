@@ -36,7 +36,7 @@ MonoBehaviour:
       Data: 0
     - Name: endFrame
       Entry: 4
-      Data: 0
+      Data: 60
     - Name: moveSpeed
       Entry: 4
       Data: 3
@@ -57,7 +57,7 @@ MonoBehaviour:
       Data: 0
     - Name: endFrame
       Entry: 4
-      Data: 0
+      Data: 60
     - Name: cancelThreshold
       Entry: 4
       Data: 1

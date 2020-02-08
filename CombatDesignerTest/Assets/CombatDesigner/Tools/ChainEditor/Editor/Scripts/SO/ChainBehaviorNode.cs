@@ -6,6 +6,7 @@ using UnityEditor;
 
 namespace CombatDesigner.EditorTool
 {
+    /// <summary>    /// A struct of input node, single input    /// </summary>
     [System.Serializable]
     public class NodeInput
     {
@@ -13,6 +14,7 @@ namespace CombatDesigner.EditorTool
         public ChainBehaviorNode node;
     }
 
+    /// <summary>    /// A struct of output nodes, multiple nodes    /// </summary>
     [System.Serializable]
     public class NodeOutput
     {
@@ -20,30 +22,42 @@ namespace CombatDesigner.EditorTool
         public List<ChainBehaviorNode> nodes = new List<ChainBehaviorNode>();
     }
 
+    /// <summary>    /// ChainBehaviorNode is a class that inherits from ScriptableObject to represent a node of the behavior    /// </summary>
     [System.Serializable]
     public class ChainBehaviorNode : ScriptableObject
     {
+        /// <summary>        /// Each node has a unique id        /// </summary>
+        [Tooltip("Each node has a unique id")]
         public int id;
+        /// <summary>        /// Node has priority        /// </summary>
+        [Tooltip("Node has priority")]
         public int priority;
 
-        public KeyCode keyCode;
-
+        /// <summary>        ///  The behavior object of the node        /// </summary>
+        [Tooltip("The behavior object of the node")]
         public ActorBehavior behavior;
 
+        /// <summary>        /// output struct        /// </summary>
         [HideInInspector] public NodeOutput output;
+        /// <summary>        /// input srtruct        /// </summary>
         [HideInInspector] public NodeInput input;
+        /// <summary>        /// The graph object that the node is in        /// </summary>
         [HideInInspector] public ChainGraph parentGraph;
+        /// <summary>        /// if the node is currently selected        /// </summary>
         [HideInInspector] public bool isSelected;
+        /// <summary>        ///  The name of the node        /// </summary>
         [HideInInspector] public string nodeName;
+        /// <summary>        /// The size of the node        /// </summary>
         [HideInInspector] public Rect nodeRect;
+        /// <summary>        /// the leaf nodes of current node        /// </summary>
         [HideInInspector] public List<int> followUps = new List<int>();
 
+        /// <summary>        /// The type of the node        /// </summary>
         protected NodeType nodeType;
-        protected GUIStyle inPortSkin;
-        protected GUIStyle outPortSkin;
 
-
-        SerializedObject _serializedObject;
+        /// <summary>        /// GUI Skin of input port        /// </summary>
+        protected GUIStyle inPortSkin;        /// <summary>        /// GUI Skin of output port        /// </summary>
+        protected GUIStyle outPortSkin;        SerializedObject _serializedObject;
         SerializedProperty _serializedBehavior;
 
 
@@ -88,27 +102,26 @@ namespace CombatDesigner.EditorTool
         /// <param name="skin"></param>
         public virtual void UpdateNodeGUI(Event e, Rect viewRect, GUISkin skin)
         {
+            // Update the SerializeObject
             if (_serializedObject != null)
             {
                 _serializedObject.Update();
             }
-            if (_serializedObject == null)
+            else
             {
                 _serializedObject = new SerializedObject(this);
                 _serializedBehavior = _serializedObject.FindProperty("behavior");
             }
 
-            ProcessEvents(e, viewRect);
+
 
             if (parentGraph != null)
             {
-
+                // Change the style of in/out ports btn style
                 inPortSkin = new GUIStyle("Button");
                 inPortSkin.overflow.bottom = 10;
-
                 outPortSkin = new GUIStyle("Button");
                 outPortSkin.overflow.top = 10;
-
 
                 // output
                 if (GUI.Button(new Rect(nodeRect.x + nodeRect.width / 4, nodeRect.y + nodeRect.height - 2, nodeRect.width / 2, 16), "", outPortSkin))
@@ -120,7 +133,7 @@ namespace CombatDesigner.EditorTool
                 // Input
                 if (GUI.Button(new Rect(nodeRect.x + nodeRect.width / 2 - 20, nodeRect.y - 14, 40, 16), "", inPortSkin))
                 {
-                    // input
+                    // If there is no connect input, then add the connection, else remove the connection
                     if (parentGraph.connectedNode != null)
                     {
                         AddConnection();
@@ -129,9 +142,11 @@ namespace CombatDesigner.EditorTool
                     {
                         RemoveConnection();
                     }
+                    // Update the connection status every time press the button
                     ResetConnectionStatus();
                 }
 
+                // Update the GUI style of selected and non-selected node
                 if (!isSelected)
                 {
                     GUI.Box(nodeRect, "", skin.GetStyle("NodeDefault"));
@@ -140,35 +155,21 @@ namespace CombatDesigner.EditorTool
                 {
                     GUI.Box(nodeRect, "", skin.GetStyle("NodeSelected"));
                 }
-            }
+            }            // Process the Keyboard and mouse events            ProcessEvents(e, viewRect);
 
+            // Draw Node GUI
             NodeBodyGUI();
 
+            // Mark Dirty to save the data in editor mode
             EditorUtility.SetDirty(this);
         }
 
+        /// <summary>        /// A method to draw chain behavior node body gui        /// </summary>
         void NodeBodyGUI()
         {
-            GUILayout.BeginArea(nodeRect);
-
-            GUI.Box(new Rect(0, 4, nodeRect.width, 24), behavior == null ? "Null" : behavior.name);
-
-
-            EditorGUI.LabelField(new Rect(nodeRect.width / 2 - 35, nodeRect.height / 10 + 20, 20, 16), "ID");
-            id = EditorGUI.IntField(new Rect(nodeRect.width / 2 + 15, nodeRect.height / 10 + 20, 20, 16), id);
-            EditorGUI.LabelField(new Rect(nodeRect.width / 2 - 35, nodeRect.height / 10 + 40, 40, 16), "Priority");
-            priority = EditorGUI.IntField(new Rect(nodeRect.width / 2 + 15, nodeRect.height / 10 + 40, 20, 16), priority);
-
-
-
-            if (_serializedObject != null)
-            {
-                EditorGUI.PropertyField(new Rect(nodeRect.width / 2 - 35, nodeRect.height / 10 + 60, 70, 16), _serializedBehavior, GUIContent.none);
-                _serializedObject.ApplyModifiedProperties();
-            }
+            GUILayout.BeginArea(nodeRect);            GUI.Box(new Rect(0, 4, nodeRect.width, 24), behavior == null ? "Null" : behavior.name);            EditorGUI.LabelField(new Rect(nodeRect.width / 2 - 35, nodeRect.height / 10 + 20, 20, 16), "ID");            id = EditorGUI.IntField(new Rect(nodeRect.width / 2 + 15, nodeRect.height / 10 + 20, 20, 16), id);            EditorGUI.LabelField(new Rect(nodeRect.width / 2 - 35, nodeRect.height / 10 + 40, 40, 16), "Priority");            priority = EditorGUI.IntField(new Rect(nodeRect.width / 2 + 15, nodeRect.height / 10 + 40, 20, 16), priority);            if (_serializedObject != null)            {                EditorGUI.PropertyField(new Rect(nodeRect.width / 2 - 35, nodeRect.height / 10 + 60, 70, 16), _serializedBehavior, GUIContent.none);                _serializedObject.ApplyModifiedProperties();            }
 
             GUILayout.EndArea();
-
         }
 #endif
 
@@ -201,11 +202,14 @@ namespace CombatDesigner.EditorTool
             }
         }
 
+        /// <summary>        ///  A method to draw line connection between two nodes        /// </summary>
         void DrawInputLines()
         {
             if (input.isOccupied && input.node != null)
             {
-                DrawLine();
+                Vector3 nodePosA = new Vector3(input.node.nodeRect.x + input.node.nodeRect.width / 2, input.node.nodeRect.y + input.node.nodeRect.height + 10, 0);
+                Vector3 nodePosB = new Vector3(nodeRect.x + nodeRect.width / 2, nodeRect.y - 6, 0);
+                DrawLine(nodePosA, nodePosB);
             }
             else
             {
@@ -213,16 +217,15 @@ namespace CombatDesigner.EditorTool
             }
         }
 
-        void DrawLine()
+        /// <summary>        /// A method to draw line based on two Vector        /// </summary>
+        void DrawLine(Vector3 a, Vector3 b)
         {
             Handles.BeginGUI();
             Handles.color = new Color(0.12f, 0.8f, 1f);
-            Handles.DrawAAPolyLine(3, new Vector3(input.node.nodeRect.x + input.node.nodeRect.width / 2, input.node.nodeRect.y + input.node.nodeRect.height + 10, 0),
-                new Vector3(nodeRect.x + nodeRect.width / 2, nodeRect.y - 6));
-            //Handles.DrawLine(new Vector3(input.node.nodeRect.x + input.node.nodeRect.width / 2, input.node.nodeRect.y + input.node.nodeRect.height + 10, 0), new Vector3(nodeRect.x + nodeRect.width / 2, nodeRect.y - 6));
-            Handles.EndGUI();
+            Handles.DrawAAPolyLine(3, a, b);            Handles.EndGUI();
         }
 
+        /// <summary>        /// A method to reset the node connection status        /// </summary>
         void ResetConnectionStatus()
         {
             input.isOccupied = (input.node != null);
@@ -230,6 +233,7 @@ namespace CombatDesigner.EditorTool
             parentGraph.connectedNode = null;
         }
 
+        /// <summary>        /// Add Connection between two nodes        /// </summary>
         void AddConnection()
         {
             input.node = parentGraph.connectedNode;
@@ -245,9 +249,9 @@ namespace CombatDesigner.EditorTool
                 }
             }
             ChainEditorUtilities.UpdateFollowUps(parentGraph);
-
         }
 
+        /// <summary>        /// Remove the connection between two nodes        /// </summary>
         void RemoveConnection()
         {
             if (input.node != null)
@@ -259,9 +263,6 @@ namespace CombatDesigner.EditorTool
             }
             input.node = parentGraph.connectedNode;
             ChainEditorUtilities.UpdateFollowUps(parentGraph);
-
         }
-
     }
-}
-#endif
+}#endif

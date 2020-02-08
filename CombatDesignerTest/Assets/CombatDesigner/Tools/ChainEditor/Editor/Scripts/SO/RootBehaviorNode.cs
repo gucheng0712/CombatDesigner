@@ -18,7 +18,6 @@ namespace CombatDesigner.EditorTool
             behavior = parentGraph.model.GetBehavior("Neutral");
             id = 0;
             priority = 0;
-            keyCode = KeyCode.None;
 
             outPortSkin = new GUIStyle("Button");
             outPortSkin.overflow.top = 10;
@@ -57,6 +56,7 @@ namespace CombatDesigner.EditorTool
                     parentGraph.connectedNode = this;
                 }
 
+                // the gui difference between selected node and non-selected node
                 if (!isSelected)
                 {
                     GUI.Box(nodeRect, "", skin.GetStyle("RootNode"));
@@ -67,12 +67,10 @@ namespace CombatDesigner.EditorTool
                 }
             }
 
-
-            ProcessEvents(e, viewRect);
-            EditorUtility.SetDirty(this);
-            NodeBodyGUI();
-        }
-#endif
+            // Process the Keyboard and mouse events
+            ProcessEvents(e, viewRect);            // Draw Node GUI            NodeBodyGUI();            // Mark Dirty to save the data in editor mode            EditorUtility.SetDirty(this);
+        }#endif
+        /// <summary>        /// A method to draw root node body gui        /// </summary>
         void NodeBodyGUI()
         {
             GUILayout.BeginArea(nodeRect);
@@ -83,5 +81,4 @@ namespace CombatDesigner.EditorTool
         }
 
     }
-}
-#endif
+}#endif
