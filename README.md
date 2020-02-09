@@ -1,13 +1,5 @@
 # CombatDesigner
 A Frame Based Visual Combat System in Unity Game Engine.
 
-## Table of Content
-
-
-### Installation
-
-
-### Credits
-
-
-### License
+# How to use it?
+[Read Documentation](https://github.com/gucheng0712/CombatDesigner/wiki).
