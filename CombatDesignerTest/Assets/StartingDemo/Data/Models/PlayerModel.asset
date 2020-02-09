@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b07f847f731739d49bc7d34e0484a9a5, type: 3}
+  m_Name: PlayerModel
+  m_EditorClassIdentifier: 
+  vfxGO: {fileID: 0}
+  e_playVFX: 0
+  e_vfxInitialTime: 0
+  e_currentStateTime: 0
+  actorType: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4294966783
+  character: {fileID: 0}
+  anim: {fileID: 0}
+  cc: {fileID: 0}
+  audioSource: {fileID: 0}
+  cmGO: {fileID: 0}
+  target: {fileID: 0}
+  chainBehaviors:
+  - name: 
+    idIndex: 0
+    behavior: {fileID: 11400000, guid: a7139005e8b8671499620104b7595e03, type: 2}
+    followUps: 01000000
+    activated: 0
+    priority: 0
+  - name: 
+    idIndex: 1
+    behavior: {fileID: 11400000, guid: e59b3a3a0eabec747867e691d75325b5, type: 2}
+    followUps: 
+    activated: 0
+    priority: 0
+  actorStats: {fileID: 0}
+  energy: 0
+  behaviors:
+  - {fileID: 11400000, guid: e59b3a3a0eabec747867e691d75325b5, type: 2}
+  - {fileID: 11400000, guid: a7139005e8b8671499620104b7595e03, type: 2}
+  hitBox: {fileID: 0}
+  velocity: {x: -0.0000022590252, y: -0.39599997, z: 0.0000021822018}
+  gravity: -20
+  friction: {x: 0.5, y: 0.99, z: 0.5}
+  moveInputDir: {x: 0, y: 0}
+  aerialTimer: 1
+  currentAirJumpPoint: 2
+  maxAirJumpPoint: 2
+  animAir: 0
+  animFallSpeed: 0
+  animMoveSpeed: 0.0063187378
+  animHit: {x: 0, y: 0}
+  animSpeed: 0
