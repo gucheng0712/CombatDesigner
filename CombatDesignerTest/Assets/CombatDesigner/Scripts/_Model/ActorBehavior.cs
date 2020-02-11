@@ -133,10 +133,10 @@ namespace CombatDesigner
         public bool MetRequirements(ActorModel model)
         {
             // if character has recovered from an attack?
-            if (model.HitRecoverFrames > 0)
-            {
-                return false;
-            }
+            // if (model.HitRecoverFrames > 0)
+            // {
+            //     return false;
+            // }
 
             // if this behavior require character to be grounded?
             if (requireGrounded)
