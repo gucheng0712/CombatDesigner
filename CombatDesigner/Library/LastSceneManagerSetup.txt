@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/CombatDesigner/Examples/3rd Person Starter/3rd Person Starter.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
