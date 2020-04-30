@@ -43,7 +43,7 @@ namespace CombatDesigner
         /// </summary>
         [Tooltip("Character GameObject")]
         public GameObject character;
-        
+
         /// <summary>
         /// Character Animator Component
         /// </summary>
@@ -57,7 +57,7 @@ namespace CombatDesigner
         /// </summary>
         [HideInInspector] public AudioSource audioSource;
 
-
+        public Rigidbody rb;
         /// <summary>
         /// Cinemachine GameObject
         /// </summary>
@@ -72,7 +72,7 @@ namespace CombatDesigner
         /// <summary>
         ///  a Collection of ChainBehavior
         /// </summary>
-        [HideInInspector]public List<ChainBehavior> chainBehaviors;
+        //[HideInInspector]public List<ChainBehavior> chainBehaviors;
 
         /// <summary>
         /// The current chain behavior index in the current behavior
@@ -115,7 +115,7 @@ namespace CombatDesigner
         /// <summary>
         /// The Current Behavior
         /// </summary>
-        public ActorBehavior currentBehavior { get; set; }
+        [ShowInInspector] public ActorBehavior currentBehavior { get; set; }
 
         /// <summary>
         /// Current frame of current behavior
@@ -137,17 +137,16 @@ namespace CombatDesigner
         /// Character Hitbox Object
         /// </summary>
         [HideInInspector] public HitBox hitBox;
-
-        [HideInInspector] public Vector3 velocity;
+        public Vector3 velocity;
         public float gravity = -20f;
-         public Vector3 friction = new Vector3(0.5f, 0.99f, 0.5f);
+        public Vector3 friction = new Vector3(0.5f, 0.99f, 0.5f);
         public float CurrentSpeed { get; set; }
         [HideInInspector] public Vector2 moveInputDir;
 
         // Attack Properties
         public bool CanCancel { get; set; }
         public bool HitConfirm { get; set; }
-         public float CurrentHitPauseFrames { get; set; }
+        public float CurrentHitPauseFrames { get; set; }
         public bool IsHitBoxActive { get; set; }
         public int CurrentAtkIndex { get; set; }
         public float HitRecoverFrames { get; set; }
@@ -155,7 +154,7 @@ namespace CombatDesigner
         // JumpProperties
         [HideInInspector] public float aerialTimer;
         [HideInInspector] public int currentAirJumpPoint;
-         public int maxAirJumpPoint = 2;
+        public int maxAirJumpPoint = 2;
 
         // animation
         [HideInInspector] public float animAir;
@@ -192,10 +191,11 @@ namespace CombatDesigner
 
             character = go;
             cc = go.GetComponent<CharacterController>();
+ 
             audioSource = go.GetComponent<AudioSource>();
             anim = go.GetComponentInChildren<Animator>();
             hitBox = go.GetComponentInChildren<HitBox>(); // todo maybe add sub hitboxes for different shape of attack abilities
-
+            rb =go.GetComponent<Rigidbody>();
             if (hitBox != null)
             {
                 hitBox.SetActive(false);

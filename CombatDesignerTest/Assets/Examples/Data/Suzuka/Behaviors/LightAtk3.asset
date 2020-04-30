@@ -15,13 +15,7 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 4335478724848833684, guid: 6ef4bcbd1b3935641bfad550dda68a9d, type: 3}
-    - {fileID: 8300000, guid: d70b9a10d6e1c494ab0b57cdd8215bb0, type: 3}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -29,11 +23,11 @@ MonoBehaviour:
     SerializationNodes:
     - Name: behaviorActions
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[CombatDesigner.IBehaviorAction,
-        Assembly-CSharp]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[CombatDesigner.IBehaviorAction, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 1
     - Name: 
       Entry: 7
       Data: 1|CombatDesigner.FrontVelocityAction, Assembly-CSharp
@@ -46,72 +40,6 @@ MonoBehaviour:
     - Name: velocityPower
       Entry: 4
       Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 2|CombatDesigner.CameraShakeAction, Assembly-CSharp
-    - Name: startFrame
-      Entry: 4
-      Data: 10
-    - Name: endFrame
-      Entry: 4
-      Data: 15
-    - Name: freelook
-      Entry: 10
-      Data: 0
-    - Name: topRigNoise
-      Entry: 10
-      Data: 1
-    - Name: midRigNoise
-      Entry: 10
-      Data: 2
-    - Name: botRigNoise
-      Entry: 10
-      Data: 3
-    - Name: shakeAmplitude
-      Entry: 4
-      Data: 3
-    - Name: shakeFrequency
-      Entry: 4
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 3|CombatDesigner.VFXAction, Assembly-CSharp
-    - Name: startFrame
-      Entry: 4
-      Data: 10
-    - Name: endFrame
-      Entry: 4
-      Data: 10
-    - Name: vfxPrefab
-      Entry: 10
-      Data: 4
-    - Name: attachSelf
-      Entry: 5
-      Data: true
-    - Name: attachTarget
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 4|CombatDesigner.SFXAction, Assembly-CSharp
-    - Name: startFrame
-      Entry: 4
-      Data: 0
-    - Name: endFrame
-      Entry: 4
-      Data: 0
-    - Name: sfx
-      Entry: 10
-      Data: 5
     - Name: 
       Entry: 8
       Data: 
@@ -156,3 +84,5 @@ MonoBehaviour:
     hitVFX: {fileID: 7163493476654373326, guid: d8eb03e76b8e2d1428806184a3519306,
       type: 3}
     cancelDelay: 20
+  followUps: []
+  priority: 0

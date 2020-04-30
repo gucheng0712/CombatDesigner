@@ -27,7 +27,7 @@ namespace CombatDesigner
 
             if (model.moveInputDir.sqrMagnitude > 1)
             {
-                model.moveInputDir.Normalize();
+                model.moveInputDir=Vector2.ClampMagnitude(model.moveInputDir, 1f);
             }
 
             Vector3 moveDir = Vector3.zero;

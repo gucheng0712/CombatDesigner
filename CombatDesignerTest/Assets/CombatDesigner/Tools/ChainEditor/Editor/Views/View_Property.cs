@@ -98,11 +98,11 @@ namespace CombatDesigner.EditorTool
                     {
                         if (EditorUtility.DisplayDialog("Confirm Dialogue", "Do you really want to update this graph data to the " + graph.model.name + " ActorModel data?", "Yes", "No"))
                         {
-                            graph.model.chainBehaviors.Clear();
-                            for (int i = 0; i < graph.nodes.Count; i++)
-                            {
-                                graph.model.chainBehaviors.Add(new ChainBehavior(graph.nodes[i].id, graph.nodes[i].behavior, graph.nodes[i].followUps));
-                            }
+                            //graph.model.chainBehaviors.Clear();
+                            //for (int i = 0; i < graph.nodes.Count; i++)
+                            //{
+                            //    graph.model.chainBehaviors.Add(new ChainBehavior(graph.nodes[i].id, graph.nodes[i].behavior, graph.nodes[i].followUps));
+                            //}
 
                             EditorUtility.SetDirty(graph.model);
                         }

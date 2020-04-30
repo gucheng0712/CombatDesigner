@@ -27,19 +27,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 1|NewAction, Assembly-CSharp
-    - Name: startFrame
-      Entry: 4
-      Data: 5
-    - Name: endFrame
-      Entry: 4
       Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -47,10 +35,10 @@ MonoBehaviour:
       Entry: 8
       Data: 
   name: NewBehavior
-  inputKey: 27
+  inputKey: 32
   blendRate: 0.2
   frameLength: 60
-  loopBehavior: 1
+  loopBehavior: 0
   cooldown: 0
   energyPointCost: 0
   airJumpPointCost: 0
@@ -80,3 +68,5 @@ MonoBehaviour:
     powerMeterGrowthRate: 0
     hitVFX: {fileID: 0}
     cancelDelay: 0
+  followUps: []
+  priority: 0

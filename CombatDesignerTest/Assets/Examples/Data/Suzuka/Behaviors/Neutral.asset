@@ -86,3 +86,6 @@ MonoBehaviour:
   requireBeingAttacked: 0
   canForceExecute: 0
   attackInfos: []
+  followUps:
+  - {fileID: 11400000, guid: a321e3422c01bee48b07e36ab415dbb1, type: 2}
+  priority: 0

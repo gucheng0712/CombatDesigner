@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes:
     - Name: behaviorActions
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[CombatDesigner.IBehaviorAction,
-        Assembly-CSharp]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[CombatDesigner.IBehaviorAction, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 3
@@ -108,3 +108,5 @@ MonoBehaviour:
     hitVFX: {fileID: 7163493476654373326, guid: d8eb03e76b8e2d1428806184a3519306,
       type: 3}
     cancelDelay: 10
+  followUps: []
+  priority: 0

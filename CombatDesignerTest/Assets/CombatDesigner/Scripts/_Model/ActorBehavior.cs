@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-
+using UnityEngine.Serialization;
 
 namespace CombatDesigner
 {
@@ -17,7 +17,8 @@ namespace CombatDesigner
         /// The Name of the behavior, corresponding to the animation state name
         /// </summary>
         [Tooltip("The Name of the behavior, corresponding to the Animation State name")]
-        public new string name;
+        [FormerlySerializedAs("name")]
+        public new string behaviorName;
         /// <summary>
         ///  The Input keycode of the behavior
         /// </summary>
@@ -27,7 +28,7 @@ namespace CombatDesigner
         ///  Animation BlendRate
         /// </summary>
         [Tooltip("Animation BlendRate")]
-        public float blendRate = 0.2f;
+        public float animBlend = 0.2f;
         /// <summary>
         /// The total frame length of the behavior
         /// </summary>
@@ -104,6 +105,8 @@ namespace CombatDesigner
         /// Timer Object
         /// </summary>
         CountDownTimer cdTimer;
+        public List<ActorBehavior> followUps;
+        public int priority;
 
         #endregion
 
@@ -176,38 +179,6 @@ namespace CombatDesigner
                 return false;
             }
 
-            // if the behavior have CoolDown
-            if (cooldown > 0)
-            {
-                if (!cdTimer.IsTimeUp)
-                {
-                    Debug.Log("Is Counting Down");
-
-                    return false; // if count down haven't finish, return
-                }
-                ResetTimer(cooldown);
-                cdTimer.Start(); // Start count down again
-            }
-
-            // if the character have enough energy to execute this behavior
-            if (model.energy < energyPointCost)
-            {
-                return false;
-            }
-            else
-            {
-                model.energy -= energyPointCost;
-            }
-
-            // if the character have enough air jump points to execute this behavior
-            if (model.currentAirJumpPoint < airJumpPointCost)
-            {
-                return false;
-            }
-            else
-            {
-                model.currentAirJumpPoint -= airJumpPointCost;
-            }
 
             // if passing all the conditions, then return true
             return true;

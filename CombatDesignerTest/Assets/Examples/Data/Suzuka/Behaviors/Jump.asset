@@ -23,14 +23,26 @@ MonoBehaviour:
     SerializationNodes:
     - Name: behaviorActions
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[CombatDesigner.IBehaviorAction,
-        Assembly-CSharp]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[CombatDesigner.IBehaviorAction, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 1|CombatDesigner.VelocityYAction, Assembly-CSharp
+    - Name: MinMaxSlider
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: startFrame
       Entry: 4
       Data: 5
@@ -46,6 +58,18 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 2|CombatDesigner.GroundMovementAction, Assembly-CSharp
+    - Name: MinMaxSlider
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: startFrame
       Entry: 4
       Data: 5
@@ -65,24 +89,54 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 3|CombatDesigner.CancelAction, Assembly-CSharp
+    - Name: MinMaxSlider
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: startFrame
+      Entry: 4
+      Data: 30
+    - Name: endFrame
+      Entry: 4
+      Data: 60
+    - Name: cancelThreshold
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
       Entry: 8
       Data: 
-  name: Jump
+  behaviorName: Jump
   inputKey: 32
-  blendRate: 0.1
-  frameLength: 20
+  animBlend: 0.2
+  frameLength: 60
   loopBehavior: 0
   cooldown: 0
   energyPointCost: 0
   airJumpPointCost: 0
   requireTarget: 0
-  requireGrounded: 1
+  requireGrounded: 0
   requireAerial: 0
   requireRunning: 0
   requireAttacking: 0
   requireBeingAttacked: 0
   canForceExecute: 0
   attackInfos: []
+  followUps:
+  - {fileID: 11400000, guid: 8057eae5d18296c44967b5159ebe94f7, type: 2}
+  priority: 0

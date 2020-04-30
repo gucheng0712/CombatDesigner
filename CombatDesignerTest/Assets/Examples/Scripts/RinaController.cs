@@ -171,7 +171,7 @@ namespace ShowCaseDemo
                 // todo remove later, for debuging purpose
                 Debug.DrawRay(this.transform.position + Vector3.up, -Vector3.up, Color.red, 1);
                 // move actor based on the hitNormal
-                model.cc.SimpleMove(new Vector3(hitNormal.x, -100, hitNormal.z) * 10f);
+                //model.cc.SimpleMove(new Vector3(hitNormal.x, -100, hitNormal.z) * 10f);
             }
             else// Reset Ground Property
             {
@@ -233,7 +233,7 @@ namespace ShowCaseDemo
                 moveDirection = newGlobalPlatformPoint - activeGlobalPlatformPos;
                 if (moveDirection.magnitude > 0.01f)
                 {
-                    model.cc.Move(moveDirection);
+                   // model.cc.Move(moveDirection);
                 }
                 if (activePlatform)
                 {

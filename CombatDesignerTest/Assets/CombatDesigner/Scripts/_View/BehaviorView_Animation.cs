@@ -37,7 +37,7 @@ public class BehaviorView_Animation
     public void CrossFadeAnimationInFixedTime(ActorModel model)
     {
         ActorBehavior currentBehavior = model.currentBehavior;
-        model.anim.CrossFadeInFixedTime(currentBehavior.name, currentBehavior.blendRate);
+        model.anim.CrossFadeInFixedTime(currentBehavior.name, currentBehavior.animBlend);
     }
 }
 

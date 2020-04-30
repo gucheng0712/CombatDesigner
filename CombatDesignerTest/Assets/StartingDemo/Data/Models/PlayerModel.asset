@@ -24,36 +24,26 @@ MonoBehaviour:
   anim: {fileID: 0}
   cc: {fileID: 0}
   audioSource: {fileID: 0}
+  rb: {fileID: 0}
   cmGO: {fileID: 0}
   target: {fileID: 0}
-  chainBehaviors:
-  - name: 
-    idIndex: 0
-    behavior: {fileID: 11400000, guid: a7139005e8b8671499620104b7595e03, type: 2}
-    followUps: 01000000
-    activated: 0
-    priority: 0
-  - name: 
-    idIndex: 1
-    behavior: {fileID: 11400000, guid: e59b3a3a0eabec747867e691d75325b5, type: 2}
-    followUps: 
-    activated: 0
-    priority: 0
   actorStats: {fileID: 0}
   energy: 0
   behaviors:
-  - {fileID: 11400000, guid: e59b3a3a0eabec747867e691d75325b5, type: 2}
   - {fileID: 11400000, guid: a7139005e8b8671499620104b7595e03, type: 2}
+  - {fileID: 11400000, guid: a321e3422c01bee48b07e36ab415dbb1, type: 2}
+  - {fileID: 11400000, guid: 57e184d532dda384682410933215ee4d, type: 2}
+  - {fileID: 11400000, guid: 68d9308eda2700d45a1e7484b0f7e73b, type: 2}
   hitBox: {fileID: 0}
-  velocity: {x: -0.0000022590252, y: -0.39599997, z: 0.0000021822018}
+  velocity: {x: 0.0000050759136, y: -24.75, z: -8.063721e-36}
   gravity: -20
   friction: {x: 0.5, y: 0.99, z: 0.5}
   moveInputDir: {x: 0, y: 0}
-  aerialTimer: 1
+  aerialTimer: 15
   currentAirJumpPoint: 2
   maxAirJumpPoint: 2
   animAir: 0
-  animFallSpeed: 0
-  animMoveSpeed: 0.0063187378
+  animFallSpeed: -742.5
+  animMoveSpeed: 0.008670474
   animHit: {x: 0, y: 0}
-  animSpeed: 0
+  animSpeed: 1

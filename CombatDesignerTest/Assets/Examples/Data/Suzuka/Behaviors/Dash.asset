@@ -23,11 +23,11 @@ MonoBehaviour:
     SerializationNodes:
     - Name: behaviorActions
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[CombatDesigner.IBehaviorAction,
-        Assembly-CSharp]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[CombatDesigner.IBehaviorAction, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 7
       Data: 1|CombatDesigner.FaceJoyStickAction, Assembly-CSharp
@@ -59,18 +59,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
-      Entry: 7
-      Data: 3|CombatDesigner.MotionTrailAction, Assembly-CSharp
-    - Name: startFrame
-      Entry: 4
-      Data: 1
-    - Name: endFrame
-      Entry: 4
-      Data: 30
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -90,5 +78,7 @@ MonoBehaviour:
   requireRunning: 0
   requireAttacking: 0
   requireBeingAttacked: 0
-  canForceExecute: 1
+  canForceExecute: 0
   attackInfos: []
+  followUps: []
+  priority: 0

@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes:
     - Name: behaviorActions
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[CombatDesigner.IBehaviorAction,
-        Assembly-CSharp]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[CombatDesigner.IBehaviorAction, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 2
@@ -77,12 +77,14 @@ MonoBehaviour:
   loopBehavior: 0
   cooldown: 0
   energyPointCost: 0
-  airJumpPointCost: 2
+  airJumpPointCost: 0
   requireTarget: 0
   requireGrounded: 0
-  requireAerial: 1
+  requireAerial: 0
   requireRunning: 0
   requireAttacking: 0
   requireBeingAttacked: 0
   canForceExecute: 0
   attackInfos: []
+  followUps: []
+  priority: 0

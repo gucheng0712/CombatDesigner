@@ -61,10 +61,10 @@ namespace CombatDesigner
             model.currentFrame = 0; // reset current frame
             model.currentBehavior = newBehavior; // update current behavior to new behavior
 
-            if (model.currentBehavior == GetBehavior("Neutral"))
-            {
-                model.currentChainIndex = 0;
-            }
+            //if (model.currentBehavior == GetBehavior("Neutral"))
+            //{
+            //    model.currentChainIndex = 0;
+            //}
             model.CanCancel = false;
 
             // Reset hit info

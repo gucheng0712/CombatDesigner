@@ -1,7 +1,9 @@
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CombatDesigner
 {
@@ -12,15 +14,28 @@ namespace CombatDesigner
     [System.Serializable]
     public abstract class IBehaviorAction
     {
+        [MinMaxSlider("FrameRange", true)]
+        public Vector2 MinMaxSlider = new Vector2(0, 60);
+
         /// <summary>
         /// Starting frame of this behavior action 
         /// </summary>
+        [FormerlySerializedAs("startFrame")]
         public float startFrame;
 
         /// <summary>
         /// Ending frame of the behavior action 
         /// </summary>
+        [FormerlySerializedAs("endFrame")]
         public float endFrame;
+
+        [OnInspectorGUI]
+        public void DrawProperty()
+        {
+            EditorGUILayout.MinMaxSlider(ref startFrame, ref endFrame, 0, 100);
+            startFrame = Mathf.Floor(startFrame);
+           endFrame = Mathf.Floor(endFrame);
+        }
 
         /// <summary>
         /// A virtual method to Initialize the behavior action .

@@ -35,6 +35,7 @@ namespace CombatDesigner
         {
             if (!model) Debug.LogError("No ActorModel Detected");
             model.Init(gameObject);
+            model.velocity = Vector3.zero;
         }
 
         /// <summary>
@@ -84,38 +85,39 @@ namespace CombatDesigner
         /// <returns></returns>
         bool CanStartNextBehavior()
         {
-            if (model.chainBehaviors.Count == 0 || model.chainBehaviors == null)
-            {
-                Debug.LogError("There is no chain connection in your behaivor, please create chain connection by using ChainEditor");
-                return false;
-            }
+            //if (model.chainBehaviors.Count == 0 || model.chainBehaviors == null)
+            //{
+            //    Debug.LogError("There is no chain connection in your behaivor, please create chain connection by using ChainEditor");
+            //    return false;
+            //}
 
-            // by default set to Neutral
-            if (model.currentChainIndex >= model.chainBehaviors.Count)
-            {
-                model.currentChainIndex = 0;
-            }
+            //// by default set to Neutral
+            //if (model.currentChainIndex >= model.chainBehaviors.Count)
+            //{
+            //    model.currentChainIndex = 0;
+            //}
 
             int currentPriority = -1;
-            for (int f = 0; f < model.chainBehaviors[model.currentChainIndex].followUps.Count; f++)
+            foreach (ActorBehavior followUp in model.currentBehavior.followUps)
             {
-                ChainBehavior nextChainBehavior = GetChainBehavior(f);
-                ActorBehavior exceptedBehavior = nextChainBehavior.behavior;
-
+                ActorBehavior exceptedBehavior = followUp;
+                
                 // Check Input buffer
                 if (GameManager_Input.Instance.bufferKeys.Contains(exceptedBehavior.inputKey)) // todo maybe add key combo and motion input buffer 
                 {
+                   
                     // the behaviors will have certain requirements
                     if (exceptedBehavior.MetRequirements(model))
                     {
+                        Debug.Log(exceptedBehavior);
                         // Update the current priority level
-                        if (UpdatePriorityLevel(nextChainBehavior.priority, ref currentPriority))
+                        if (UpdatePriorityLevel(exceptedBehavior.priority, ref currentPriority))
                         {
                             // if there is no followups, then go to the index 1 which is neutral behavior
-                            model.currentChainIndex = (nextChainBehavior.followUps.Count > 0) ? nextChainBehavior.idIndex : 0;
+                            model.currentBehavior = (exceptedBehavior.followUps.Count > 0) ? exceptedBehavior : model.GetBehavior("Neutral");
 
                             //nextBehavior = model.GetBehavior(nextInputInfo.behaviorIndex);
-                            nextBehavior = model.GetBehavior(exceptedBehavior.name);
+                            nextBehavior = exceptedBehavior;
 
                             return true;
                         }
@@ -130,11 +132,11 @@ namespace CombatDesigner
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        ChainBehavior GetChainBehavior(int index)
+        ActorBehavior GetChainBehavior(int index)
         {
-            int nextChainBehaviorIndex = model.chainBehaviors[model.currentChainIndex].followUps[index];
-            ChainBehavior nextChainBehavior = model.chainBehaviors[nextChainBehaviorIndex];
-            return nextChainBehavior;
+            ActorBehavior nextChainBehaviorIndex = model.behaviors[model.currentChainIndex].followUps[index];
+            //ChainBehavior nextChainBehavior = model.behaviors[nextChainBehaviorIndex];
+            return nextChainBehaviorIndex;
         }
 
         /// <summary>
@@ -168,7 +170,7 @@ namespace CombatDesigner
         {
             UpdateVelocity();
 
-            UpdateGrounndCheckInfo();
+            //UpdateGrounndCheckInfo();
 
             UpdateFriction();
         }
@@ -183,8 +185,8 @@ namespace CombatDesigner
             Vector3 velocity = new Vector3(model.velocity.x * model.objectTimeScale,
                                             model.velocity.y * model.objectTimeScale * model.objectTimeScale,
                                             model.velocity.z * model.objectTimeScale);
-
-            model.cc.Move(velocity * Time.deltaTime); // Move the actor based on the velocity
+          model.rb.MovePosition(transform.position + model.velocity * Time.deltaTime);
+            // model.cc.Move(velocity * Time.deltaTime); // Move the actor based on the velocity
 
             model.velocity.y += model.gravity * Time.fixedDeltaTime; // gravity
             model.velocity.y = Mathf.Max(model.velocity.y, -25f); // the max value of gravity velocity will be -100;
@@ -247,7 +249,7 @@ namespace CombatDesigner
             Vector3 friction = new Vector3(model.friction.x * model.objectTimeScale, model.friction.y, model.friction.z * model.objectTimeScale);
 
             // Scale the velocity based on the fraction
-            model.velocity.Scale(model.friction); // add friction to player make it slow down
+            model.velocity.Scale(friction); // add friction to player make it slow down
         }
 
         /// <summary>
