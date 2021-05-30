@@ -65,7 +65,7 @@ MonoBehaviour:
       Data: 30
     - Name: moveSpeed
       Entry: 4
-      Data: 10
+      Data: 5
     - Name: rotationMaxSpeed
       Entry: 4
       Data: 3000
@@ -86,7 +86,7 @@ MonoBehaviour:
       Data: 2
     - Name: yDirForce
       Entry: 4
-      Data: 5
+      Data: 4
     - Name: 
       Entry: 8
       Data: 

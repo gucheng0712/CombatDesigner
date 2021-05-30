@@ -1,1 +1,1 @@
-{"m_DefineSymbols":[{"first":1,"second":"ODIN_INSPECTOR"}],"m_AllowUnsafeCode":false}
+{"m_DefineSymbols":{"m_Value":[{"first":1,"second":"ODIN_INSPECTOR;ODIN_INSPECTOR_3"}],"m_Initialized":true},"m_AllowUnsafeCode":{"m_Value":false,"m_Initialized":false},"m_ScriptDebugInfoEnabled":{"m_Value":false,"m_Initialized":true}}

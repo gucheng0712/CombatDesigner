@@ -65,7 +65,7 @@ MonoBehaviour:
       Data: 60
     - Name: moveSpeed
       Entry: 4
-      Data: 10
+      Data: 5
     - Name: rotationMaxSpeed
       Entry: 4
       Data: 3000

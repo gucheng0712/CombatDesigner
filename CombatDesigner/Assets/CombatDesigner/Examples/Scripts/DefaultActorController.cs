@@ -41,6 +41,13 @@ public class DefaultActorController : ActorController
     protected override void UpdateAnimation()
     {
         base.UpdateAnimation();
+
+        // todo falling animation based on the velocity
+        model.animFallSpeed = model.velocity.y * 30f;
+
+        model.anim.SetFloat("MoveSpeed", model.animMoveSpeed);
+        model.anim.SetFloat("Air", model.animAir);
+        model.anim.SetFloat("FallSpeed", model.animFallSpeed);
     }
 
     protected override void UpdateFriction()
